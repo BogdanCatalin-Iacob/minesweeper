@@ -37,9 +37,15 @@ h1 {
     justify-content: space-between;
 }
 
+.grid {
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+}
 
-
-
+.cell {
+    border: 1px solid black;
+    cursor: pointer;
+}
 
 
 
