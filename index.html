@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minesweeper</title>
 
+    <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <!-- end Google Fonts -->
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <div class="game-container">
+        <!-- game header -->
         <header class="game-panel">
             <h1>Game Board</h1>
             <div class="score">
@@ -19,6 +27,9 @@
                 <span>00000</span>
             </div>
         </header>
+        <!-- end game header -->
+
+        <!-- main game area -->
         <main class="game-board">
             <div class="grid"></div>
 
@@ -26,11 +37,12 @@
                 <h2 class="end-game-text">Game <br> Over</h2>
                 <button class="btn">Play Again</button>
             </div>
-
-
         </main>
+        <!-- end main game area -->
     </div>
 
+    <!-- custom js -->
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
