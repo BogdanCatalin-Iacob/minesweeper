@@ -2,6 +2,7 @@
     --font-grotesque: 'Darker Grotesque';
     --font-bungee: 'Bungee Spice';
     --font-press: 'Press Start 2P';
+    --bg-color-main: rgb(10, 0, 50);
 }
 
 * {
@@ -14,17 +15,19 @@ body {
     font-family: var(--font-grotesque), sans-serif;
     color: rgb(0, 23, 50);
     font-size: 2.5rem;
-    background-color: rgb(216, 238, 232);
+    background-color: var(--bg-color-main);
     padding: 1rem;
 }
 
 .game-container {
     background-color: yellow;
     width: 600px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .game-panel {
-    background-color: rgb(20, 200, 21);
+    background-color: var(--bg-color-main);
     font-family: var(--font-bungee), sans-serif;
 }
 
