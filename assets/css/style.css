@@ -12,11 +12,20 @@ body {
     padding: 1rem;
 }
 
+.game-container {
+    background-color: yellow;
+    width: 484px;
+}
 
+.game-panel {
+    background-color: rgb(20, 200, 21);
+}
 
-
-
-
+.game-board {
+    border: 2px solid rgb(0, 23, 50);
+    position: relative;
+    
+}
 
 
 
