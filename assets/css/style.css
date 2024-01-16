@@ -23,7 +23,7 @@ body {
 
 .game-container {
     background-color: yellow;
-    width: 70vw;
+    width: 40vw;
     margin-left: 50%;
     transform: translate(-50%, 0);
 }
@@ -111,4 +111,15 @@ h1 {
 
 .hidden {
     display: none;
+}
+
+
+/****************************
+*       Media Query         *
+****************************/
+
+@media screen and (max-width: 1023px) {
+    .game-container {
+        width: 70vw;
+    }
 }
