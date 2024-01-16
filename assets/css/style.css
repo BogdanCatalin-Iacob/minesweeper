@@ -5,7 +5,6 @@
     --color-bg-main: rgb(10, 0, 50);
     --color-font: rgb(0, 23, 50);
     --color-over: rgba(27, 25, 24, 0.911);
-    
 }
 
 * {
@@ -24,7 +23,7 @@ body {
 
 .game-container {
     background-color: yellow;
-    width: 600px;
+    width: 70vw;
     margin-left: 50%;
     transform: translate(-50%, 0);
 }
@@ -36,6 +35,7 @@ body {
 
 .game-board {
     border: 2px solid rgb(0, 23, 50);
+    width: 100%;
     position: relative;
     
 }
@@ -52,11 +52,13 @@ h1 {
 }
 
 .grid {
-    display:grid;
-    grid-template-columns: repeat(10, 1fr);
+    display: grid;
+    grid-template-columns: repeat(10, minmax(20px, 1fr));
 }
 
 .cell {
+    width: 100%;
+    aspect-ratio: 1/1;
     border: 1px solid black;
     cursor: pointer;
 }
@@ -64,6 +66,13 @@ h1 {
 .cell-clicked {
     background-color: rgb(157, 197, 199);
     cursor: not-allowed;
+}
+
+.cell-bomb {
+    background-image: url('../images/bomb.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .end-game-screen {
