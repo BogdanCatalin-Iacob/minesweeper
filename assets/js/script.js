@@ -70,3 +70,7 @@ function endGame(isVictory) {
 
     endGameScreen.classList.remove('hidden');
 }
+
+playAgainButton.addEventListener('click', function() {
+    window.location.reload();
+});
