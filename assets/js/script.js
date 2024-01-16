@@ -43,7 +43,9 @@ function createCells() {
     }
 }
 
-
+/**
+ * Create random bombs location
+ */
 function createBombLocation() {
     while (bombList.length < totalBombs){
         let randomNumber = Math.floor(Math.random() * totalCells) + 1;
@@ -53,5 +55,18 @@ function createBombLocation() {
         }
     }
 }
-let ada = grid.children;
-console.log(ada[9]);
+
+/**
+ * Display game over screen
+ * @param {boolean} isVictory
+ *  - true - Game Won | false - Game Lost
+ */
+function endGame(isVictory) {
+
+    if (isVictory) {
+        endGameText.innerHTML = 'YOU<br>WON';
+        endGameScreen.classList.add('win');
+    }
+
+    endGameScreen.classList.remove('hidden');
+}
