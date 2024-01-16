@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    createBombLocation();
     createCells();
 });
 
@@ -23,11 +24,16 @@ function updateScore() {
 
 /**
  * Creates game board cells
+ * Rely on createBombLocation() to add bombs 
  */
 function createCells() {
     for (let i = 0; i < totalCells; i++){
         const cell = document.createElement('div');
         cell.classList.add('cell');
+
+        if (bombList.includes(i + 1)){
+            cell.classList.add('cell-bomb');
+        }
     
         cell.addEventListener('click', function() {
             console.log(`clicked: ${i}`);
@@ -36,3 +42,16 @@ function createCells() {
         grid.appendChild(cell);
     }
 }
+
+
+function createBombLocation() {
+    while (bombList.length < totalBombs){
+        let randomNumber = Math.floor(Math.random() * totalCells) + 1;
+    
+        if (!bombList.includes(randomNumber)){
+            bombList.push(randomNumber);
+        }
+    }
+}
+let ada = grid.children;
+console.log(ada[9]);
