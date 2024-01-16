@@ -61,6 +61,11 @@ h1 {
     cursor: pointer;
 }
 
+.cell-clicked {
+    background-color: rgb(157, 197, 199);
+    cursor: not-allowed;
+}
+
 .end-game-screen {
     position: absolute;
     top: 0;
