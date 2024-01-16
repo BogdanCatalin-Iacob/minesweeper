@@ -1,3 +1,6 @@
+/*-----------------------------
+|       Custom Variables       |
+ -----------------------------*/
 :root{
     --font-grotesque: 'Darker Grotesque';
     --font-bungee: 'Bungee Spice';
@@ -6,6 +9,10 @@
     --color-font: rgb(0, 23, 50);
     --color-over: rgba(27, 25, 24, 0.911);
 }
+
+/*-----------------------------
+|             General          |
+ -----------------------------*/
 
 * {
     margin: 0;
@@ -20,6 +27,10 @@ body {
     background-color: var(--color-bg-main);
     padding: 1rem;
 }
+
+/*-----------------------------
+|             Game board       |
+ -----------------------------*/
 
 .game-container {
     background-color: yellow;
@@ -74,6 +85,10 @@ h1 {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/*-----------------------------
+|         End Game Screen      |
+ -----------------------------*/
 
 .end-game-screen {
     position: absolute;
