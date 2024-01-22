@@ -29,14 +29,19 @@ function updateScore() {
 function createCells() {
     for (let i = 0; i < totalCells; i++){
         const cell = document.createElement('div');
-        cell.classList.add('cell');
+        cell.classList.add('cell', 'hidden-cell');
 
         if (bombList.includes(i + 1)){
             cell.classList.add('cell-bomb');
         }
     
         cell.addEventListener('click', function() {
-            console.log(`clicked: ${i}`);
+            cell.classList.remove('hidden-cell');
+        });
+        
+        cell.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            markCell(cell);
         });
     
         grid.appendChild(cell);
@@ -53,6 +58,21 @@ function createBombLocation() {
         if (!bombList.includes(randomNumber)){
             bombList.push(randomNumber);
         }
+    }
+}
+
+/**
+ * Mark the cell as having a bomb
+ * and don't reveal it
+ * @param {*} cell 
+ */
+function markCell(cell) {
+    if (cell.classList.contains('hidden-cell')) {
+        cell.classList.remove('hidden-cell');
+        cell.classList.add('marked');
+    }else if (cell.classList.contains('marked')) {
+        cell.classList.add('hidden-cell');
+        cell.classList.remove('marked');
     }
 }
 
