@@ -79,11 +79,26 @@ h1 {
     cursor: not-allowed;
 }
 
+.number {
+    background-color: gray;
+}
+
+.marked {
+    background-image: url('../images/flag.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .cell-bomb {
     background-image: url('../images/bomb.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.hidden-cell{
+    background-color: grey;
 }
 
 /*-----------------------------

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    createBombLocation();
-    createCells();
+    // createBombLocation();
+    // createCells();
 });
 
 const grid = document.getElementsByClassName('grid')[0];
@@ -8,11 +8,14 @@ const scoreCounter = document.getElementsByClassName('score-counter')[0];
 const endGameScreen = document.getElementsByClassName('end-game-screen')[0];
 const endGameText = document.getElementsByClassName('end-game-text')[0];
 const playAgainButton = document.getElementsByClassName('play-again')[0];
+let width = 10; // initial number of cells on a row
 const totalCells = 100;
-let bombList = [];
 const totalBombs = 5;
+let bombs = Array.from(createBombLocation());
 
 let score = 0;
+
+let cells = Array.from(createCells());
 
 /**
  * Update and display score
@@ -30,15 +33,16 @@ function createCells() {
     for (let i = 0; i < totalCells; i++){
         const cell = document.createElement('div');
         cell.classList.add('cell', 'hidden-cell');
-
-        if (bombList.includes(i + 1)){
-            cell.classList.add('cell-bomb');
-        }
+        
+        // if (bombs.includes(i + 1)){
+        //     cell.classList.add('cell-bomb');
+        // }
     
         cell.addEventListener('click', function() {
-            cell.classList.remove('hidden-cell');
+            
+            revealCell(cell);
         });
-        
+
         cell.addEventListener('contextmenu', e => {
             e.preventDefault();
             markCell(cell);
@@ -46,12 +50,14 @@ function createCells() {
     
         grid.appendChild(cell);
     }
+    return grid.childNodes;
 }
 
 /**
  * Create random bombs location
  */
 function createBombLocation() {
+    let bombList = [];
     while (bombList.length < totalBombs){
         let randomNumber = Math.floor(Math.random() * totalCells) + 1;
     
@@ -59,6 +65,7 @@ function createBombLocation() {
             bombList.push(randomNumber);
         }
     }
+    return bombList;
 }
 
 /**
@@ -67,12 +74,35 @@ function createBombLocation() {
  * @param {*} cell 
  */
 function markCell(cell) {
-    if (cell.classList.contains('hidden-cell')) {
-        cell.classList.remove('hidden-cell');
+    if (cell.classList.contains('hidden-cell') && !cell.classList.contains('marked')) {
         cell.classList.add('marked');
-    }else if (cell.classList.contains('marked')) {
-        cell.classList.add('hidden-cell');
+    }else {
         cell.classList.remove('marked');
+    }
+    
+}
+
+function revealCell(cell) {
+    if (!cell.classList.contains('hidden-cell')){
+        return;
+    }
+    if (cell.classList.contains('cell-bomb')) {
+        return;
+    }
+    cell.classList.remove('hidden-cell');
+    
+
+    // cell.classList.add('number');
+    const adjacentCells = nearbyCells(cell);
+}
+
+function nearbyCells(cell){
+    const cells = [];
+    let parent = cell.parentNode;
+    let selectedCellIndex = Array.prototype.indexOf.call(parent.children, cell);
+    // check if selected cell has a bomb
+    if (bombs.includes(selectedCellIndex)){
+        cell.classList.add('cell-bomb');
     }
 }
 
