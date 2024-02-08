@@ -10,7 +10,7 @@ const endGameText = document.getElementsByClassName('end-game-text')[0];
 const playAgainButton = document.getElementsByClassName('play-again')[0];
 let width = 10; // initial number of cells on a row
 const totalCells = 100;
-const totalBombs = 5;
+const totalBombs = 55;
 let bombs = Array.from(createBombLocation());
 
 let score = 0;
@@ -34,20 +34,21 @@ function createCells() {
         const cell = document.createElement('div');
         cell.classList.add('cell', 'hidden-cell');
         
-        // if (bombs.includes(i + 1)){
-        //     cell.classList.add('cell-bomb');
-        // }
-    
+        if (bombs.includes(i + 1)){
+            cell.classList.add('bomb');
+        }
+        
+        // click to reveal the cell
         cell.addEventListener('click', function() {
-            
             revealCell(cell);
         });
 
+        // right click to mark / unmark the cell
         cell.addEventListener('contextmenu', e => {
             e.preventDefault();
             markCell(cell);
         });
-    
+
         grid.appendChild(cell);
     }
     return grid.childNodes;
@@ -91,18 +92,47 @@ function revealCell(cell) {
     }
     cell.classList.remove('hidden-cell');
     
-
-    // cell.classList.add('number');
     const adjacentCells = nearbyCells(cell);
 }
 
+/**
+ * Counts the number of bombs around the clicked cell
+ * @param {cell} cell 
+ */
 function nearbyCells(cell){
-    const cells = [];
-    let parent = cell.parentNode;
-    let selectedCellIndex = Array.prototype.indexOf.call(parent.children, cell);
-    // check if selected cell has a bomb
-    if (bombs.includes(selectedCellIndex)){
-        cell.classList.add('cell-bomb');
+    for (let i = 0; i < totalCells; i++){
+        let total = 0;
+        const isLeftEdge = (i % width === 0);
+        const isRightEdge = ( i% width === width - 1);
+
+        if(cells[i].classList.contains('hidden-cell')){
+            if (i > 0 && !isLeftEdge && cells[i - 1].classList.contains('cell-bomb')){
+                total++;
+            }
+            if (i > 9 && !isRightEdge && cells[i + 1 - width].classList.contains('bomb')){
+                total++;
+            }
+            if (i > 10 && cells[i - width].classList.contains('bomb')){
+                total++;
+            }
+            if (i > 11 && !isLeftEdge && cells[i - width - 1].classList.contains('bomb')){
+                total++;
+            }
+            if (i < 99 && !isRightEdge && cells[i + 1].classList.contains('bomb')){
+                total++;
+            }
+            if (i < 90 && !isLeftEdge && cells[i - 1 + width].classList.contains('bomb')){
+                total++;
+            }
+            if (i < 88 && !isRightEdge && cells[i + 1 + width].classList.contains('bomb')){
+                total++;
+            }
+            if (i < 89 && cells[i + width].classList.contains('bomb')){
+                total++;
+            }
+            
+            cells[i].setAttribute('data', total);
+        }
     }
 }
 
