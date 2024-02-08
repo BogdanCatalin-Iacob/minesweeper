@@ -87,8 +87,8 @@ function revealCell(cell) {
     if (!cell.classList.contains('hidden-cell')){
         return;
     }
-    if (cell.classList.contains('cell-bomb')) {
-        return;
+    if (cell.classList.contains('bomb')) {
+        endGame(false);
     }
     cell.classList.remove('hidden-cell');
     
