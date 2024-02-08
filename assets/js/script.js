@@ -148,6 +148,11 @@ function endGame(isVictory) {
         endGameScreen.classList.add('win');
     }
 
+    cells.forEach((cell) => {
+        if (cell.classList.contains('bomb')){
+            cell.classList.add('cell-bomb');
+        }
+    });
     endGameScreen.classList.remove('hidden');
 }
 
