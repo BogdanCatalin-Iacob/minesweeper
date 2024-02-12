@@ -72,6 +72,8 @@ h1 {
     aspect-ratio: 1/1;
     border: 1px solid black;
     cursor: pointer;
+    text-align: center;
+    font-size: 2rem;
 }
 
 .cell-clicked {
@@ -151,5 +153,15 @@ h1 {
 @media screen and (max-width: 1023px) {
     .game-container {
         width: 70vw;
+    }
+
+    .cell {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .cell {
+        font-size: 1rem;
     }
 }
