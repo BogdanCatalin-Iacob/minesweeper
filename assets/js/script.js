@@ -10,7 +10,7 @@ const endGameText = document.getElementsByClassName('end-game-text')[0];
 const playAgainButton = document.getElementsByClassName('play-again')[0];
 let width = 10; // initial number of cells on a row
 const totalCells = 100;
-const totalBombs = 55;
+const totalBombs = 5;
 let bombs = Array.from(createBombLocation());
 
 let score = 0;
@@ -101,7 +101,10 @@ function revealCell(cell) {
     }
     cell.classList.remove('hidden-cell');
     
-    cell.innerHTML = cell.getAttribute('data');
+    // show numbers of bombs only if there is 1 or more bombs around cell
+    if (cell.getAttribute('data') != 0){
+        cell.innerHTML = cell.getAttribute('data');
+    }
 }
 
 /**
