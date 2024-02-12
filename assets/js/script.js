@@ -10,7 +10,7 @@ const endGameText = document.getElementsByClassName('end-game-text')[0];
 const playAgainButton = document.getElementsByClassName('play-again')[0];
 let width = 10; // initial number of cells on a row
 const totalCells = 100;
-const totalBombs = 5;
+const totalBombs = 15;
 let bombs = Array.from(createBombLocation());
 
 let score = 0;
@@ -33,6 +33,7 @@ function createCells() {
     for (let i = 0; i < totalCells; i++){
         const cell = document.createElement('div');
         cell.classList.add('cell', 'hidden-cell');
+        cell.setAttribute('id', i);
         
         if (bombs.includes(i + 1)){
             cell.classList.add('bomb');
@@ -98,13 +99,16 @@ function revealCell(cell) {
     }
     if (cell.classList.contains('bomb')) {
         endGame(false);
-    }
+    } 
     cell.classList.remove('hidden-cell');
     
     // show numbers of bombs only if there is 1 or more bombs around cell
     if (cell.getAttribute('data') != 0){
         cell.innerHTML = cell.getAttribute('data');
+        return;
     }
+
+    checkCell(cell);
 }
 
 /**
@@ -146,6 +150,84 @@ function nearbyCells(cell){
             cells[i].setAttribute('data', total);
         }
     }
+}
+
+/**
+ * Check and reveal cells if the clicked / revealed cell has no bomb around 
+ * @param {cell} cell 
+ */
+function checkCell(cell){
+    const currentId = cell.id;
+    const isLeftEdge = (currentId % width === 0);
+    const isRightEdge = (currentId % width === width - 1);
+
+    // set a 10ms timeout to reveal other cells
+    setTimeout(() => {
+        if (currentId > 0 && !isLeftEdge){
+            const newId = cells[parseInt(currentId) - 1].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId > 9 && !isRightEdge){
+            const newId = cells[parseInt(currentId) + 1 - width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId > 10){
+            const newId = cells[parseInt(currentId) - width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId > 11 && !isLeftEdge){
+            const newId = cells[parseInt(currentId) - 1 - width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId < 98 && !isRightEdge){
+            const newId = cells[parseInt(currentId) + 1].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId < 90 && !isLeftEdge){
+            const newId = cells[parseInt(currentId) - 1 + width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId < 88 && !isRightEdge){
+            const newId = cells[parseInt(currentId) + 1 + width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+        if (currentId < 89 && !isRightEdge){
+            const newId = cells[parseInt(currentId) + width].id;
+            const newCell = document.getElementById(newId);
+            if (newCell.classList.contains('bomb')){
+                return;
+            }
+            revealCell(newCell);
+        }
+    }, 10);
 }
 
 /**
