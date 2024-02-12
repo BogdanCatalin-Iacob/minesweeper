@@ -72,7 +72,7 @@ function createBombLocation() {
 /**
  * Mark the cell as having a bomb
  * and don't reveal it
- * @param {*} cell 
+ * @param {cell} cell 
  */
 function markCell(cell) {
     if (cell.classList.contains('hidden-cell') && !cell.classList.contains('marked')) {
@@ -83,7 +83,16 @@ function markCell(cell) {
     
 }
 
+/**
+ * Shows the number of bombs around an empty cell
+ * or call endGame() if the cell contains a bomb
+ * @param {cell} cell 
+ */
 function revealCell(cell) {
+
+    // calculate the number of bombs around a cell
+    nearbyCells(cell);
+
     if (!cell.classList.contains('hidden-cell')){
         return;
     }
@@ -92,7 +101,7 @@ function revealCell(cell) {
     }
     cell.classList.remove('hidden-cell');
     
-    const adjacentCells = nearbyCells(cell);
+    cell.innerHTML = cell.getAttribute('data');
 }
 
 /**
