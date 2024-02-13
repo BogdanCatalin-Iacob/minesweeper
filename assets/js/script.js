@@ -164,7 +164,7 @@ function checkCell(cell){
     // set a 10ms timeout to reveal other cells
     setTimeout(() => {
         if (currentId > 0 && !isLeftEdge){
-            const newId = cells[parseInt(currentId) - 1].id;
+            const newId = parseInt(currentId) - 1;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -172,7 +172,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId > 9 && !isRightEdge){
-            const newId = cells[parseInt(currentId) + 1 - width].id;
+            const newId = parseInt(currentId) + 1 - width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -180,7 +180,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId > 10){
-            const newId = cells[parseInt(currentId) - width].id;
+            const newId = parseInt(currentId) - width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -188,7 +188,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId > 11 && !isLeftEdge){
-            const newId = cells[parseInt(currentId) - 1 - width].id;
+            const newId = parseInt(currentId) - 1 - width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -196,7 +196,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId < 98 && !isRightEdge){
-            const newId = cells[parseInt(currentId) + 1].id;
+            const newId = parseInt(currentId) + 1;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -204,7 +204,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId < 90 && !isLeftEdge){
-            const newId = cells[parseInt(currentId) - 1 + width].id;
+            const newId = parseInt(currentId) - 1 + width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -212,7 +212,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId < 88 && !isRightEdge){
-            const newId = cells[parseInt(currentId) + 1 + width].id;
+            const newId = parseInt(currentId) + 1 + width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
@@ -220,7 +220,7 @@ function checkCell(cell){
             revealCell(newCell);
         }
         if (currentId < 89 && !isRightEdge){
-            const newId = cells[parseInt(currentId) + width].id;
+            const newId = parseInt(currentId) + width;
             const newCell = document.getElementById(newId);
             if (newCell.classList.contains('bomb')){
                 return;
