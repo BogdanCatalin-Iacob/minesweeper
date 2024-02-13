@@ -56,7 +56,13 @@ h1 {
     text-align: center;
 }
 
-.score {
+.hidden-bombs {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flags {
     font-size: 2rem;
     display: flex;
     justify-content: space-between;
