@@ -97,6 +97,11 @@ function revealCell(cell) {
     if (!cell.classList.contains('hidden-cell')){
         return;
     }
+
+    if (cell.classList.contains('marked')){
+        return;
+    }
+    
     if (cell.classList.contains('bomb')) {
         endGame(false);
     } 
