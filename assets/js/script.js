@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const grid = document.getElementsByClassName('grid')[0];
-const scoreCounter = document.getElementsByClassName('score-counter')[0];
+const hiddenBombs = document.getElementsByClassName('bombs')[0];
+const flags = document.getElementsByClassName('flags-left')[0];
 const endGameScreen = document.getElementsByClassName('end-game-screen')[0];
 const endGameText = document.getElementsByClassName('end-game-text')[0];
 const playAgainButton = document.getElementsByClassName('play-again')[0];
 let width = 10; // initial number of cells on a row
 const totalCells = 100;
 const totalBombs = 15;
+let flagsLeft = totalBombs;
 let bombs = Array.from(createBombLocation());
-
-let score = 0;
 
 let cells = Array.from(createCells());
 
@@ -67,6 +67,9 @@ function createBombLocation() {
             bombList.push(randomNumber);
         }
     }
+
+    hiddenBombs.innerHTML = totalBombs;
+    flags.innerHTML = flagsLeft;
     return bombList;
 }
 
@@ -78,9 +81,12 @@ function createBombLocation() {
 function markCell(cell) {
     if (cell.classList.contains('hidden-cell') && !cell.classList.contains('marked')) {
         cell.classList.add('marked');
+        flagsLeft--;
     }else {
         cell.classList.remove('marked');
+        flagsLeft++;
     }
+    flags.innerHTML = flagsLeft;
     
 }
 
@@ -101,7 +107,7 @@ function revealCell(cell) {
     if (cell.classList.contains('marked')){
         return;
     }
-    
+
     if (cell.classList.contains('bomb')) {
         endGame(false);
     } 
