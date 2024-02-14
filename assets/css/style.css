@@ -7,8 +7,8 @@
     --font-press: 'Press Start 2P';
     --color-bg-main: #0A0032;
     --color-bg-cells: #EDF67D;
-    --color-bg-cells-hidden: #89B0AE;
-    --color-border-light: #77A09E;
+    --color-bg-cells-hidden: #77A09E;
+    --color-border-light: #89B0AE;
     --color-border-dark: #6F9694;
     --color-font: rgb(0, 23, 50);
     --color-over: rgba(27, 25, 24, 0.911);
@@ -80,19 +80,10 @@ h1 {
 .cell {
     width: 100%;
     aspect-ratio: 1/1;
-    border: 1px solid black;
+    border: 1px solid var(--color-border-dark);
     cursor: pointer;
     text-align: center;
     font-size: 2rem;
-}
-
-.cell-clicked {
-    background-color: rgb(157, 197, 199);
-    cursor: not-allowed;
-}
-
-.number {
-    background-color: gray;
 }
 
 .marked {
@@ -110,7 +101,9 @@ h1 {
 }
 
 .hidden-cell{
-    background-color: grey;
+    background-color: var(--color-bg-cells-hidden);
+    border: 0.5rem solid;
+    border-color: var(--color-border-light) var(--color-border-dark) var(--color-border-dark) var(--color-border-light);
 }
 
 /*-----------------------------
