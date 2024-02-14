@@ -61,7 +61,7 @@ function createCells() {
 function createBombLocation() {
     let bombList = [];
     while (bombList.length < totalBombs){
-        let randomNumber = Math.floor(Math.random() * totalCells) + 1;
+        let randomNumber = Math.floor(Math.random() * totalCells);
     
         if (!bombList.includes(randomNumber)){
             bombList.push(randomNumber);
