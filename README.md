@@ -27,3 +27,13 @@ Difficulty can be increased by adding mines or starting with a larger grid.
 ## Images
 Bomb image - bomb.png - taken from [PNGTree](https://pngtree.com/freepng/mine-bomb_5404055.html)
 Flag image - flag.png - taken from [Vecteezy](https://www.vecteezy.com/png/10158189-flag-icon-sign-symbol-design)
+
+## Colors
+Colors used on game:
+-   main background - #0A0032
+-   revealed cells - #EDF67D
+-   hidden cells - #77A09E
+-   light border on cells - #89B0AE
+-   dark border on cells - #6F9694
+
+![Color Pallete](assets/images/color-pallete.png)
