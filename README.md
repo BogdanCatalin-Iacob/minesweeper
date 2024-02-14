@@ -18,7 +18,8 @@ A player selects a cell to open it. If a player opens a cell containing a mine, 
 ## Objective and strategy
 A game of Minesweeper begins when the player first selects a cell on a board.
 During the game, the player uses information given from the opened cells to deduce further cells that are safe to open, iteratively gaining more information to solve the board.
-The player is also given the number of remaining mines in the board, known as the minecount, which is calculated as the total number of mines subtracted by the number of flagged cells (thus the minecount can be negative if too many flags have been placed).
+The player is also given the number mines on the board, known as the minecount, and the number of flags left after marking the cells.
+At the begining the number of flags is equal to the number of mines.
 
 To win a game of Minesweeper, all non-mine cells must be opened without opening a mine.
 Difficulty can be increased by adding mines or starting with a larger grid.
