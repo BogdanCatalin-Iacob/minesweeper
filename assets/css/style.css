@@ -5,7 +5,11 @@
     --font-grotesque: 'Darker Grotesque';
     --font-bungee: 'Bungee Spice';
     --font-press: 'Press Start 2P';
-    --color-bg-main: rgb(10, 0, 50);
+    --color-bg-main: #0A0032;
+    --color-bg-cells: #EDF67D;
+    --color-bg-cells-hidden: #89B0AE;
+    --color-border-light: #77A09E;
+    --color-border-dark: #6F9694;
     --color-font: rgb(0, 23, 50);
     --color-over: rgba(27, 25, 24, 0.911);
 }
@@ -33,7 +37,7 @@ body {
  -----------------------------*/
 
 .game-container {
-    background-color: yellow;
+    background-color: var(--color-bg-cells);
     width: 40vw;
     margin-left: 50%;
     transform: translate(-50%, 0);
